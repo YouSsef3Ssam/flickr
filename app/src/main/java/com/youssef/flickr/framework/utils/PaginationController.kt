@@ -2,6 +2,7 @@ package com.youssef.flickr.framework.utils
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.NetworkUtils
 import com.youssef.flickr.framework.utils.Constants.Pagination
 import javax.inject.Inject
 
@@ -39,7 +40,7 @@ class PaginationController @Inject constructor() : RecyclerView.OnScrollListener
             val visibleItemCount = it.childCount
             val totalItemCount = it.itemCount
             val firstVisibleItemPosition = it.findFirstVisibleItemPosition()
-            if (isLoading || isLastPage) {
+            if (!NetworkUtils.isConnected() || isLoading || isLastPage) {
                 return
             }
             if (visibleItemCount + firstVisibleItemPosition >= totalItemCount) {

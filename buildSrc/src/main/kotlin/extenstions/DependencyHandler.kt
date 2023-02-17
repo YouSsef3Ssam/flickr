@@ -133,3 +133,7 @@ fun DependencyHandler.addUiTestDependencies() {
     androidTestImplementation(TestDependencies.espressoContrib)
     implementation(TestDependencies.espressoIdling)
 }
+
+fun DependencyHandler.addUtils() {
+    implementation(Dependencies.utils)
+}

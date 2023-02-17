@@ -37,4 +37,6 @@ object Dependencies {
     const val easyPref = "com.iamhabib:easy-preference:${Versions.easyPref}"
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
+    const val utils = "com.blankj:utilcode:${Versions.utils}"
 }

@@ -21,6 +21,7 @@ object Versions {
     const val coil = "2.1.0"
     const val easyPref = "1.0.1"
     const val room = "2.4.0-alpha03"
+    const val utils = "1.9.12"
 
     /** Unit Test */
     const val jUnit = "4.13.2"

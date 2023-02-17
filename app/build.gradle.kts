@@ -95,5 +95,6 @@ dependencies {
     addHilt()
     addNetwork()
     addRoom()
+    addUtils()
     addTestsDependencies()
 }
