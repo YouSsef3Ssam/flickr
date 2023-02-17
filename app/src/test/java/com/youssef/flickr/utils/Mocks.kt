@@ -5,6 +5,7 @@ import com.youssef.flickr.business.entities.PhotoDto
 import com.youssef.flickr.business.entities.PhotosResponseDto
 import com.youssef.flickr.framework.datasources.local.room.entities.LocalPhotoEntity
 import com.youssef.flickr.framework.presentation.entities.Photo
+import com.youssef.flickr.framework.presentation.entities.PhotosResponse
 
 object Mocks {
     val photoDto = PhotoDto(
@@ -23,4 +24,5 @@ object Mocks {
     val localPhoto = LocalPhotoEntity(id = "1", title = "Hello World!", url = "photoUrl")
     val photo = Photo(id = "1", title = "Hello World!", url = "photoUrl", isFavourite = true)
 
+    val photosResponse = PhotosResponse(firstPage = true, lastPage = false, photos = listOf(photo))
 }
