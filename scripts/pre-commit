@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Running git pre-commit hook"
+./gradlew app: ktlintFormat -- daemon
 ./gradlew app: ktlintCheck -- daemon
 STATUS=$?
 # return 1 exit code if running checks fails

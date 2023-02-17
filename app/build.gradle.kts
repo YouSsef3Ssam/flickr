@@ -111,5 +111,4 @@ tasks.register("installGitHook", type = Copy::class) {
     fileMode = "0777".toInt()
 }
 
-
 tasks.getByPath(":app:preBuild").dependsOn("installGitHook")

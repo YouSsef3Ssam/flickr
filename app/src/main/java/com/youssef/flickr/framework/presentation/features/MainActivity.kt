@@ -36,4 +36,14 @@ class MainActivity : AppCompatActivity() {
         _binding = null
         super.onDestroy()
     }
+
+    fun foo() {
+        // This is a line comment
+    }
+    fun bar() {
+        // This is a line comment
+    }
+    fun baz() {
+        // This is a line comment
+    }
 }
