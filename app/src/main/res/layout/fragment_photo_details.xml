@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="favouriteLoading"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="downloadLoading"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="isFavourite"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="photo"
+            type="com.youssef.flickr.framework.presentation.entities.Photo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        tools:context=".framework.presentation.features.photoDetails.PhotoDetailsFragment">
+
+        <ImageView
+            android:id="@+id/photoIV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:imageUrl="@{photo.url}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/photoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:text="@{photo.title}"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/favouriteIV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Youssef Essam" />
+
+            <ImageView
+                android:id="@+id/favouriteIV"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:enabled="@{!favouriteLoading}"
+                android:padding="8dp"
+                android:src="@{isFavourite ? @drawable/ic_favorite_filled : @drawable/ic_favorite_border}"
+                android:visibility="@{favouriteLoading ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/downloadIV"
+                app:layout_constraintStart_toEndOf="@id/photoTitle"
+                tools:src="@drawable/ic_favorite_filled" />
+
+            <ProgressBar
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:progressTint="@color/colorAccent"
+                android:visibility="@{favouriteLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/favouriteIV"
+                app:layout_constraintEnd_toEndOf="@id/favouriteIV"
+                app:layout_constraintStart_toStartOf="@id/favouriteIV"
+                app:layout_constraintTop_toTopOf="@id/favouriteIV" />
+
+            <ImageView
+                android:id="@+id/downloadIV"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="8dp"
+                android:enabled="@{!downloadLoading}"
+                android:padding="8dp"
+                android:src="@drawable/ic_download"
+                android:visibility="@{downloadLoading ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/favouriteIV" />
+
+            <ProgressBar
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:progressTint="@color/colorAccent"
+                android:visibility="@{downloadLoading ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/downloadIV"
+                app:layout_constraintEnd_toEndOf="@id/downloadIV"
+                app:layout_constraintStart_toStartOf="@id/downloadIV"
+                app:layout_constraintTop_toTopOf="@id/downloadIV" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

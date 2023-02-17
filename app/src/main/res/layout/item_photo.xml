@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="photo"
+            type="com.youssef.flickr.framework.presentation.entities.Photo" />
+
+        <variable
+            name="listener"
+            type="com.youssef.flickr.framework.presentation.callback.OnItemClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="12dp"
+        android:onClick="@{() -> listener.onItemClicked(photo)}"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/photoIV"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{photo.url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/titleView"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:alpha="0.4"
+                android:background="@color/colorBlack"
+                android:visibility="@{photo.title.isEmpty() ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@+id/photoIV"
+                app:layout_constraintEnd_toEndOf="@+id/photoIV"
+                app:layout_constraintStart_toStartOf="@+id/photoIV" />
+
+            <TextView
+                android:id="@+id/photoTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{photo.title}"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/titleView"
+                app:layout_constraintEnd_toEndOf="@+id/titleView"
+                app:layout_constraintStart_toStartOf="@+id/titleView"
+                app:layout_constraintTop_toTopOf="@+id/titleView"
+                tools:text="Youssef Essam" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
