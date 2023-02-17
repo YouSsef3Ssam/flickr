@@ -1,4 +1,4 @@
-package com.youssef.flickr.datasources.remote
+package com.youssef.flickr.framework.datasources.remote
 
 import com.youssef.flickr.framework.datasources.remote.abstraction.PhotosDataSource
 import com.youssef.flickr.framework.datasources.remote.impl.PhotosDataSourceImpl

@@ -7,16 +7,15 @@ import com.youssef.flickr.framework.datasources.local.room.entities.LocalPhotoEn
 import com.youssef.flickr.framework.presentation.entities.Photo
 
 object Mocks {
-    private val photoDto = PhotoDto(
+    val photoDto = PhotoDto(
         id = "1",
-        owner = "1232",
         secret = "123",
         server = "asd",
         farm = 2,
         title = "Hello World!"
     )
 
-    private val photosResponseDto =
+    val photosResponseDto =
         PhotosResponseDto(page = 1, pages = 100, photo = listOf(photoDto))
 
     val apiResponse = ApiResponse(photos = photosResponseDto)

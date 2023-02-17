@@ -36,9 +36,9 @@ class PhotosRepositoryImpl @Inject constructor(
         val response = mapper.map(responseDto)
         val favouritesPhotos =
             localDataSource.getPhotosByIds(response.photos.map { it.id }).associateBy { it.id }
-        val photos = response.photos.onEach {
+        response.photos.forEach {
             it.isFavourite = favouritesPhotos[it.id] != null
         }
-        return response.copy(photos = photos)
+        return response
     }
 }

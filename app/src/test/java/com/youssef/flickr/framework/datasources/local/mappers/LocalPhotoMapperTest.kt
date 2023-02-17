@@ -1,7 +1,5 @@
-package com.youssef.flickr.datasources.local.mappers
+package com.youssef.flickr.framework.datasources.local.mappers
 
-import com.youssef.flickr.framework.datasources.local.mappers.LocalEntityMapper
-import com.youssef.flickr.framework.datasources.local.mappers.LocalPhotoMapper
 import com.youssef.flickr.framework.datasources.local.room.entities.LocalPhotoEntity
 import com.youssef.flickr.framework.presentation.entities.Photo
 import com.youssef.flickr.utils.Mocks

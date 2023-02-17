@@ -2,7 +2,6 @@ package com.youssef.flickr.business.mappers
 
 import com.youssef.flickr.business.entities.PhotoDto
 import com.youssef.flickr.framework.presentation.entities.Photo
-import com.youssef.flickr.framework.utils.EntityMapper
 import javax.inject.Inject
 
 class PhotoMapper @Inject constructor() : EntityMapper<PhotoDto, Photo> {

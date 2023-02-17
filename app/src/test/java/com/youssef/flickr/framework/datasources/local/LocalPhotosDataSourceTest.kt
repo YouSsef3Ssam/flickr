@@ -1,4 +1,4 @@
-package com.youssef.flickr.datasources.local
+package com.youssef.flickr.framework.datasources.local
 
 import com.youssef.flickr.framework.datasources.local.abstraction.LocalPhotosDataSource
 import com.youssef.flickr.framework.datasources.local.impl.LocalPhotosDataSourceImpl
