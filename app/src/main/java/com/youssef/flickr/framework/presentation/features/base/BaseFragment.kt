@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.youssef.flickr.R
 import com.youssef.flickr.framework.utils.ext.getMessage
 import com.youssef.flickr.framework.utils.ext.getType
@@ -49,13 +49,11 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         requireContext().getString(R.string.please_check_your_internet_connection)
 
     protected fun handleError(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
-            .show()
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     protected fun showMessage(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
-            .show()
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {

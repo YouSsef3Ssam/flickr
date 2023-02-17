@@ -30,20 +30,20 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
     }
 
     private fun listenOnPagination() {
-        binding.imagesRV.layoutManager.apply {
+        binding.photosRV.layoutManager.apply {
             if (this is LinearLayoutManager) {
                 paginationController.setLayoutManager(this)
                 paginationController.onLoadMoreItems { pageNumber ->
                     viewModel.loadNextPage(pageNumber)
                 }
-                binding.imagesRV.addOnScrollListener(paginationController)
+                binding.photosRV.addOnScrollListener(paginationController)
             }
         }
     }
 
     private fun initUI() {
         binding.viewModel = viewModel
-        binding.swipeRefreshLayout.setOnRefreshListener { paginationController.reload() }
+        binding.photosFragmentLayout.setOnRefreshListener { paginationController.reload() }
         setupRV()
     }
 
@@ -53,7 +53,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
                 navigateTo(PhotosFragmentDirections.openPhotoDetails(item))
             }
         })
-        binding.imagesRV.adapter = adapter
+        binding.photosRV.adapter = adapter
     }
 
     private fun subscribeOnViewObservers() {
@@ -74,7 +74,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
                     hideLoading()
                     handleError(it.throwable)
                 }
-                PaginationDataState.FirstLoading -> binding.swipeRefreshLayout.isRefreshing = true
+                PaginationDataState.FirstLoading -> binding.photosFragmentLayout.isRefreshing = true
                 PaginationDataState.PaginationEnded -> paginationController.isLastPage(true)
                 PaginationDataState.PaginationLoading -> paginationController.isLoading(true)
             }
@@ -82,7 +82,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
     }
 
     private fun hideLoading() {
-        binding.swipeRefreshLayout.isRefreshing = false
+        binding.photosFragmentLayout.isRefreshing = false
         paginationController.isLoading(false)
     }
 
@@ -90,8 +90,8 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
 
     override fun onDestroyView() {
         paginationController.clean()
-        binding.imagesRV.adapter = null
-        binding.imagesRV.layoutManager = null
+        binding.photosRV.adapter = null
+        binding.photosRV.layoutManager = null
         super.onDestroyView()
     }
 }

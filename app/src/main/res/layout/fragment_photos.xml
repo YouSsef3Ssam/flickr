@@ -11,13 +11,12 @@
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+        android:id="@+id/photosFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".framework.presentation.features.photos.PhotosFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/gamesFragmentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -48,7 +47,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/imagesRV"
+                android:id="@+id/photosRV"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:paddingTop="8dp"

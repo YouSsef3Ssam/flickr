@@ -27,12 +27,12 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
     }
 
     private fun initUI() {
-        binding.swipeRefreshLayout.setOnRefreshListener { viewModel.refresh() }
+        binding.favouriteFragmentLayout.setOnRefreshListener { viewModel.refresh() }
         setupRV()
     }
 
     private fun setupRV() {
-        binding.imagesRV.adapter = adapter
+        binding.favouritesPhotosRV.adapter = adapter
         adapter.listen(object : OnItemClickListener<Photo> {
             override fun onItemClicked(item: Photo) {
                 navigateTo(FavouriteFragmentDirections.openPhotoDetails(item))
@@ -44,19 +44,24 @@ class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
         viewModel.favouritePhotosDataState.observe(viewLifecycleOwner) {
             when (it) {
                 is DataState.Success -> {
-                    binding.swipeRefreshLayout.isRefreshing = false
+                    binding.favouriteFragmentLayout.isRefreshing = false
                     binding.isEmpty = it.data.isEmpty()
                     adapter.submitList(it.data)
                 }
                 is DataState.Failure -> {
-                    binding.swipeRefreshLayout.isRefreshing = false
+                    binding.favouriteFragmentLayout.isRefreshing = false
                     showMessage(getString(R.string.action_failure_message))
                 }
-                DataState.Loading -> binding.swipeRefreshLayout.isRefreshing = true
+                DataState.Loading -> binding.favouriteFragmentLayout.isRefreshing = true
             }
         }
     }
 
     override fun getLayoutResId(): Int = R.layout.fragment_favourite
 
+    override fun onDestroyView() {
+        binding.favouritesPhotosRV.adapter = null
+        binding.favouritesPhotosRV.layoutManager = null
+        super.onDestroyView()
+    }
 }

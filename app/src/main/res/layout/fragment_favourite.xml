@@ -13,13 +13,12 @@
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+        android:id="@+id/favouriteFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".framework.presentation.features.favourite.FavouriteFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/gamesFragmentLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -43,7 +42,7 @@
                 tools:text="Youssef Essam" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/imagesRV"
+                android:id="@+id/favouritesPhotosRV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
