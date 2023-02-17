@@ -58,7 +58,6 @@ class PhotosViewModelTest {
         assertEquals(expectedGetPhotosSuccessResult.photos, actual)
     }
 
-
     @Test
     fun `test next page then return Append`() = runBlocking {
         coEvery { useCase.getPhotos(any(), any()) } answers {

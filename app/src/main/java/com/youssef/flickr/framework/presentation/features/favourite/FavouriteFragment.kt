@@ -12,7 +12,6 @@ import com.youssef.flickr.framework.utils.states.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
 

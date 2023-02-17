@@ -24,5 +24,4 @@ class LocalPhotosDataSourceImpl @Inject constructor(
 
     override suspend fun removeFromFavourite(photo: Photo): Int =
         dao.delete(mapper.mapTo(photo))
-
 }

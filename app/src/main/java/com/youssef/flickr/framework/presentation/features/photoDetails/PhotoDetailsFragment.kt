@@ -7,7 +7,6 @@ import com.youssef.flickr.framework.presentation.features.base.BaseFragment
 import com.youssef.flickr.framework.utils.states.DataState
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class PhotoDetailsFragment : BaseFragment<FragmentPhotoDetailsBinding>() {
 
@@ -70,5 +69,4 @@ class PhotoDetailsFragment : BaseFragment<FragmentPhotoDetailsBinding>() {
     }
 
     override fun getLayoutResId(): Int = R.layout.fragment_photo_details
-
 }

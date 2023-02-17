@@ -11,7 +11,9 @@ import io.mockk.mockkClass
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -104,7 +106,6 @@ class LocalPhotosDataSourceTest {
         assertEquals(expectedInsertPhotosSuccessResult, response)
     }
 
-
     @Test
     fun `addToFavourite with failure response then return error`() = runBlocking {
         coEvery { dao.insertPhoto(any()) } throws expectedFailureResult
@@ -126,7 +127,6 @@ class LocalPhotosDataSourceTest {
         assertNotNull(response)
         assertEquals(expectedRemovePhotosSuccessResult, response)
     }
-
 
     @Test
     fun `removeFromFavourite with failure response then return error`() = runBlocking {

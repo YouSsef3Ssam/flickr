@@ -12,7 +12,7 @@ import com.youssef.flickr.R
  * without caching from glide but integrate okhttp client and use its caching
  * mechanism internally
  */
-@BindingAdapter(value = ["app:imageUrl", "app:placeholder"], requireAll = false)
+@BindingAdapter(value = ["imageUrl", "placeholder"], requireAll = false)
 fun ImageView.loadImage(imageUrl: String?, @DrawableRes placeholder: Int?) {
     this.load(imageUrl) {
         placeholder(placeholder ?: R.drawable.ic_image_placeholder)

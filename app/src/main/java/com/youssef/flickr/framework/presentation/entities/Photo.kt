@@ -9,4 +9,4 @@ data class Photo(
     val title: String,
     val url: String,
     var isFavourite: Boolean
-): Parcelable
+) : Parcelable

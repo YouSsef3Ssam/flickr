@@ -23,3 +23,7 @@ allprojects {
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+
+
+
+tasks.getByPath(":app:preBuild").dependsOn("installGitHook")

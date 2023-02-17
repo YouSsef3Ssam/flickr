@@ -13,7 +13,9 @@ import io.mockk.coVerify
 import io.mockk.mockkClass
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

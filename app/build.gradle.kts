@@ -1,4 +1,10 @@
-import extenstions.*
+import extenstions.addHilt
+import extenstions.addNavigation
+import extenstions.addNetwork
+import extenstions.addRoom
+import extenstions.addTestsDependencies
+import extenstions.addUtils
+import extenstions.androidComponent
 
 plugins {
     id("com.android.application")
@@ -7,6 +13,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("org.jlleitschuh.gradle.ktlint").version("11.2.0")
 }
 
 @Suppress("UnstableApiUsage")
@@ -88,7 +95,6 @@ android {
     }
 }
 
-
 dependencies {
     androidComponent()
     addNavigation()
@@ -98,3 +104,12 @@ dependencies {
     addUtils()
     addTestsDependencies()
 }
+
+tasks.register("installGitHook", type = Copy::class) {
+    from(File(rootProject.rootDir, "scripts/pre-commit"))
+    into(File(rootProject.rootDir, ".git/hooks"))
+    fileMode = "0777".toInt()
+}
+
+
+tasks.getByPath(":app:preBuild").dependsOn("installGitHook")

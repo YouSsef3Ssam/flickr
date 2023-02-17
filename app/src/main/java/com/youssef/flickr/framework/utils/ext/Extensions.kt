@@ -8,16 +8,18 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.youssef.flickr.framework.utils.Constants.debounceTime
 import com.youssef.flickr.framework.utils.EspressoIdlingResource
-import com.youssef.flickr.framework.utils.SingleLiveEvent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
-
 
 fun Fragment.navigateTo(direction: NavDirections) {
     try {
@@ -26,15 +28,6 @@ fun Fragment.navigateTo(direction: NavDirections) {
         Timber.e(e)
     }
 }
-
-fun Fragment.popBack() {
-    try {
-        findNavController().popBackStack()
-    } catch (e: Exception) {
-        Timber.e(e)
-    }
-}
-
 
 fun NavController.navigateSafe(direction: NavDirections) {
     currentDestination?.getAction(direction.actionId)?.run { navigate(direction) }

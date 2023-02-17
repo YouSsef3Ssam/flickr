@@ -28,14 +28,15 @@ class PhotoDetailsViewModel @Inject constructor(
     private val _removeFromFavouriteDataState: SingleLiveEvent<DataState<Int>> = SingleLiveEvent()
     val removeFromFavouriteDataState: LiveData<DataState<Int>> get() = _removeFromFavouriteDataState
 
-
     private val _downloadPhotoDataState: SingleLiveEvent<DataState<String>> = SingleLiveEvent()
     val downloadPhotoDataState: LiveData<DataState<String>> get() = _downloadPhotoDataState
 
-
     fun didClickFavourite() {
-        if (photo.isFavourite) removeFromFavourite()
-        else addToFavourite()
+        if (photo.isFavourite) {
+            removeFromFavourite()
+        } else {
+            addToFavourite()
+        }
     }
 
     private fun addToFavourite() {

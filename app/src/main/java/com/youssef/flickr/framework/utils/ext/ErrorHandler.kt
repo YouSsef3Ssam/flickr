@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.youssef.flickr.business.entities.errors.ErrorMessage
 import com.youssef.flickr.business.entities.errors.ErrorTypes
-import com.youssef.flickr.business.entities.errors.ErrorTypes.*
 import com.youssef.flickr.business.entities.errors.ServerError
 import retrofit2.HttpException
 import java.net.ConnectException
@@ -13,18 +12,18 @@ import java.util.concurrent.TimeoutException
 
 fun Throwable.getType(): ErrorTypes =
     when (this) {
-        is ConnectException, is UnknownHostException -> NetworkError
-        is HttpException -> HttpError(this)
-        is TimeoutException -> TimeOut
-        else -> UnKnown(this)
+        is ConnectException, is UnknownHostException -> ErrorTypes.NetworkError
+        is HttpException -> ErrorTypes.HttpError(this)
+        is TimeoutException -> ErrorTypes.TimeOut
+        else -> ErrorTypes.UnKnown(this)
     }
 
 fun ErrorTypes.getMessage(): ErrorMessage =
     when (this) {
-        is NetworkError -> ErrorMessage(type = NetworkError)
-        is TimeOut -> ErrorMessage(type = TimeOut)
-        is HttpError -> getHttpError(throwable as HttpException)
-        is UnKnown -> ErrorMessage(text = throwable.message, type = UnKnown(throwable))
+        is ErrorTypes.NetworkError -> ErrorMessage(type = ErrorTypes.NetworkError)
+        is ErrorTypes.TimeOut -> ErrorMessage(type = ErrorTypes.TimeOut)
+        is ErrorTypes.HttpError -> getHttpError(throwable as HttpException)
+        is ErrorTypes.UnKnown -> ErrorMessage(throwable.message, ErrorTypes.UnKnown(throwable))
     }
 
 private fun getHttpError(throwable: HttpException): ErrorMessage {
@@ -38,5 +37,5 @@ private fun getHttpError(throwable: HttpException): ErrorMessage {
             null
         }
     }
-    return ErrorMessage(message, HttpError(throwable))
+    return ErrorMessage(message, ErrorTypes.HttpError(throwable))
 }

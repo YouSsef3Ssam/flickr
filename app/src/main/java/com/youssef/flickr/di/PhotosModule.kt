@@ -29,7 +29,6 @@ class PhotosModule {
     fun providePhotosApi(retrofit: Retrofit): PhotosApi =
         retrofit.create(PhotosApi::class.java)
 
-
     @Singleton
     @Provides
     fun providePhotosDao(database: FlickrDatabase): PhotosDao = database.photoDao()
@@ -60,5 +59,4 @@ class PhotosModule {
     @Singleton
     fun providePhotoUseCase(repository: PhotosRepository): PhotosUseCase =
         PhotosUseCaseImpl(repository)
-
 }
