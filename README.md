@@ -19,4 +19,4 @@
 - [Mockito](https://github.com/mockito/mockito) & [Mockk](https://mockk.io/) for unit testing
 - [Espresso](https://developer.android.com/training/testing/espresso) for UI Testing
 - [Ktlint](https://gorillalogic.com/blog/automate-ktlint-checks-with-git-hooks-avoiding-code-style-violations-in-code-reviews/)
-  code analysis
+  and [Detekt](https://www.kodeco.com/24470020-integrating-detekt-in-the-workflow) for code analysis
