@@ -5,6 +5,7 @@ import extenstions.addRoom
 import extenstions.addTestsDependencies
 import extenstions.addUtils
 import extenstions.androidComponent
+import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
     id("com.android.application")
@@ -105,10 +106,21 @@ dependencies {
     addTestsDependencies()
 }
 
-tasks.register("installGitHook", type = Copy::class) {
-    from(File(rootProject.rootDir, "scripts/pre-commit"))
-    into(File(rootProject.rootDir, ".git/hooks"))
-    fileMode = "0777".toInt()
+
+val installGitHook by tasks.creating(Copy::class) {
+    val suffix = if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        println("Running installGitHook windows")
+        "windows"
+    } else {
+        println("Running installGitHook macos")
+        "macos"
+    }
+    val sourceDir = File(rootProject.rootDir, "scripts/pre-commit-$suffix")
+    val targetDir = File(rootProject.rootDir, ".git/hooks")
+    from(sourceDir)
+    into(targetDir)
+    rename("pre-commit-$suffix", "pre-commit")
+    fileMode = 775
 }
 
-tasks.getByPath(":app:preBuild").dependsOn("installGitHook")
+tasks.getByPath(":app:preBuild").dependsOn(installGitHook)

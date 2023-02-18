@@ -37,10 +37,11 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    fun foo() {
+    fun foo(){
         // This is a line comment
     }
-    fun bar() {
+    fun bar()
+    {
         // This is a line comment
     }
     fun baz() {
