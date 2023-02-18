@@ -12,6 +12,7 @@ import com.youssef.flickr.business.entities.errors.RemoveFavouriteException
 import com.youssef.flickr.business.repositories.abstraction.FavouritesRepository
 import com.youssef.flickr.framework.datasources.local.abstraction.LocalPhotosDataSource
 import com.youssef.flickr.framework.presentation.entities.Photo
+import com.youssef.flickr.framework.utils.Constants
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -54,9 +55,9 @@ class FavouritesRepositoryImpl @Inject constructor(
     private fun saveBitmapToStorage(bitmap: Bitmap): File {
         val fileName: String = System.currentTimeMillis().toString()
         val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val file = File.createTempFile(fileName, ".jpg", storageDir)
+        val file = File.createTempFile(fileName, Constants.tempImageSuffix, storageDir)
         val os: OutputStream = BufferedOutputStream(FileOutputStream(file))
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, Constants.bitmapQuality, os)
         os.close()
         return file
     }
