@@ -65,7 +65,7 @@ class PhotosViewModel @Inject constructor(private val useCase: PhotosUseCase) : 
 
     private suspend fun Flow<PhotosResponse>.handleResponse(pageNumber: Int) {
         this.onStart {
-            if (pageNumber == 1) {
+            if (pageNumber == Pagination.PAGE_NUMBER) {
                 _photosDataState.value = PaginationDataState.FirstLoading
             } else {
                 _photosDataState.value = PaginationDataState.PaginationLoading
@@ -75,9 +75,7 @@ class PhotosViewModel @Inject constructor(private val useCase: PhotosUseCase) : 
             .collect {
                 when {
                     it.lastPage -> _photosDataState.value = PaginationDataState.PaginationEnded
-                    it.firstPage ->
-                        _photosDataState.value =
-                            PaginationDataState.First(it.photos)
+                    it.firstPage -> _photosDataState.value = PaginationDataState.First(it.photos)
                     else -> _photosDataState.value = PaginationDataState.Append(it.photos)
                 }
             }
