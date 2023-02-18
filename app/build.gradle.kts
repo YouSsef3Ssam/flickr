@@ -106,7 +106,6 @@ dependencies {
     addTestsDependencies()
 }
 
-
 val installGitHook by tasks.creating(Copy::class) {
     val suffix = if (Os.isFamily(Os.FAMILY_WINDOWS)) {
         println("Running installGitHook windows")
