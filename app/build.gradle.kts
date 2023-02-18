@@ -15,6 +15,7 @@ plugins {
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("org.jlleitschuh.gradle.ktlint").version("11.2.0")
+    id("io.gitlab.arturbosch.detekt").version("1.22.0")
 }
 
 @Suppress("UnstableApiUsage")

@@ -1,11 +1,14 @@
 package com.youssef.flickr.framework.utils.ext
 
 import com.google.gson.Gson
+import com.google.gson.JsonParseException
+import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import com.youssef.flickr.business.entities.errors.ErrorMessage
 import com.youssef.flickr.business.entities.errors.ErrorTypes
 import com.youssef.flickr.business.entities.errors.ServerError
 import retrofit2.HttpException
+import timber.log.Timber
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.util.concurrent.TimeoutException
@@ -33,7 +36,11 @@ private fun getHttpError(throwable: HttpException): ErrorMessage {
     throwable.response()?.errorBody()?.let {
         message = try {
             gson.fromJson<ServerError>(it.string(), type)?.message
-        } catch (e: Exception) {
+        } catch (e: JsonParseException) {
+            Timber.e(e)
+            null
+        } catch (e: JsonSyntaxException) {
+            Timber.e(e)
             null
         }
     }

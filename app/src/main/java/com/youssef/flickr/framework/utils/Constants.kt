@@ -42,4 +42,6 @@ object Constants {
 
     const val debounceTime = 1000L
     val supportedBottomNavFragments = listOf(R.id.photosFragment, R.id.favouriteFragment)
+    const val bitmapQuality = 100
+    const val tempImageSuffix = ".jpg"
 }

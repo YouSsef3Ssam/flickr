@@ -8,6 +8,7 @@ import coil.imageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.youssef.flickr.R
+import com.youssef.flickr.business.entities.errors.RemoveFavouriteException
 import com.youssef.flickr.business.repositories.abstraction.FavouritesRepository
 import com.youssef.flickr.framework.datasources.local.abstraction.LocalPhotosDataSource
 import com.youssef.flickr.framework.presentation.entities.Photo
@@ -35,7 +36,7 @@ class FavouritesRepositoryImpl @Inject constructor(
 
     override suspend fun removeFromFavourite(photo: Photo): Flow<Int> = flow {
         val result = dataSource.removeFromFavourite(photo)
-        if (result == 0) throw RuntimeException(context.getString(R.string.action_failure_message))
+        if (result == 0) throw RemoveFavouriteException(context.getString(R.string.action_failure_message))
         emit(result)
     }.flowOn(IO)
 

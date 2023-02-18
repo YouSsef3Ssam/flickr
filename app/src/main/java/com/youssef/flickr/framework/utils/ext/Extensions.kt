@@ -24,7 +24,9 @@ import kotlin.coroutines.EmptyCoroutineContext
 fun Fragment.navigateTo(direction: NavDirections) {
     try {
         findNavController().navigateSafe(direction)
-    } catch (e: Exception) {
+    } catch (e: IllegalStateException) {
+        Timber.e(e)
+    } catch (e: IllegalArgumentException) {
         Timber.e(e)
     }
 }
