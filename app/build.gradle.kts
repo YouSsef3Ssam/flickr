@@ -108,10 +108,14 @@ dependencies {
 
 val installGitHook by tasks.creating(Copy::class) {
     val suffix = if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        println("Running installGitHook windows")
+        println("***********************************")
+        println("Running installGitHook on windows")
+        println("***********************************")
         "windows"
     } else {
-        println("Running installGitHook macos")
+        println("***********************************")
+        println("Running installGitHook on macos")
+        println("***********************************")
         "macos"
     }
     val sourceDir = File(rootProject.rootDir, "scripts/pre-commit-$suffix")
@@ -119,7 +123,7 @@ val installGitHook by tasks.creating(Copy::class) {
     from(sourceDir)
     into(targetDir)
     rename("pre-commit-$suffix", "pre-commit")
-    fileMode = 775
+    fileMode = 777
 }
 
 tasks.getByPath(":app:preBuild").dependsOn(installGitHook)

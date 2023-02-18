@@ -1,12 +1,14 @@
 #!C:/Program\ Files/Git/usr/bin/sh.exe
 
-echo "Running lint check..."
 
-./gradle app:ktlintFormat --daemon
-./gradle app:ktlintCheck --daemon
+echo "*******************************"
+echo "Running git pre-commit hook"
+echo "*******************************"
 
-status=$?
+./gradlew app:ktlintCheck --daemon
+
+RESULT=$?
 
 # return 1 exit code if running checks fails
-[ $status -ne 0 ] && exit 1
+[ $RESULT -ne 0 ] && exit 1
 exit 0
