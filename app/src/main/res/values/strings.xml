@@ -9,4 +9,7 @@
     <string name="action_failure_message">Can\'t perform this action</string>
     <string name="search_hint">Search</string>
     <string name="no_favourites_yet">No Favourites yet.</string>
+    <string name="image">Image</string>
+    <string name="add_photo_to_favourite">Add photo to favourite</string>
+    <string name="download_photo">Download photo</string>
 </resources>

@@ -4,7 +4,7 @@ import com.youssef.flickr.framework.datasources.local.room.entities.LocalPhotoEn
 import com.youssef.flickr.framework.presentation.entities.Photo
 import com.youssef.flickr.utils.Mocks
 import com.youssef.flickr.utils.Mocks.localPhoto
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -39,5 +39,4 @@ class LocalPhotoMapperTest {
         assertEquals(localPhoto.title, response.title)
         assertEquals(localPhoto.url, response.url)
     }
-
 }

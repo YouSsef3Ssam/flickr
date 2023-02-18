@@ -3,7 +3,7 @@ package com.youssef.flickr.business.mappers
 import com.youssef.flickr.business.entities.PhotoDto
 import com.youssef.flickr.framework.presentation.entities.Photo
 import com.youssef.flickr.utils.Mocks
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

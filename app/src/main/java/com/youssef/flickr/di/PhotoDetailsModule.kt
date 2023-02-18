@@ -17,7 +17,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class PhotoDetailsModule {
 
-
     @Provides
     @Singleton
     fun provideFavouritesRepository(
@@ -30,5 +29,4 @@ class PhotoDetailsModule {
     @Singleton
     fun provideFavouritesUseCase(repository: FavouritesRepository): FavouritesUseCase =
         FavouritesUseCaseImpl(repository)
-
 }

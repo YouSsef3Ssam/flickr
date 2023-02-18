@@ -31,10 +31,11 @@
 
             <ImageView
                 android:id="@+id/photoIV"
+                imageUrl="@{photo.url}"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/image"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{photo.url}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

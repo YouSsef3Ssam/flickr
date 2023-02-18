@@ -31,11 +31,10 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         bindViews()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
         return binding.root

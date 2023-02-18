@@ -11,7 +11,6 @@ import com.youssef.flickr.databinding.ActivityMainBinding
 import com.youssef.flickr.framework.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null

@@ -6,11 +6,15 @@ import com.youssef.flickr.business.repositories.impl.FavouritesRepositoryImpl
 import com.youssef.flickr.framework.datasources.local.abstraction.LocalPhotosDataSource
 import com.youssef.flickr.framework.presentation.entities.Photo
 import com.youssef.flickr.utils.Mocks
-import io.mockk.*
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.mockkClass
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

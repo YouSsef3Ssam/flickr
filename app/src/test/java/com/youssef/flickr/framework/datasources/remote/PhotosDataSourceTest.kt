@@ -73,5 +73,4 @@ class PhotosDataSourceTest {
         assertEquals(expectedFailureResult, response)
         assertEquals(expectedFailureResult.message, response?.message)
     }
-
 }

@@ -10,7 +10,9 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
@@ -41,7 +43,6 @@ private fun clickChildViewWithId(id: Int): ViewAction {
     }
 }
 
-
 fun withDrawable(@DrawableRes id: Int) = object : TypeSafeMatcher<View>() {
     override fun describeTo(description: Description) {
         description.appendText("ImageView with drawable same as drawable with id $id")
@@ -59,7 +60,6 @@ fun checkSnackBarMessage(message: String) {
     onView(withId(com.google.android.material.R.id.snackbar_text))
         .check(matches(withText(message)))
 }
-
 
 fun checkSnackBarDisplayed() {
     onView(withId(com.google.android.material.R.id.snackbar_text))

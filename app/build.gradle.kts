@@ -1,4 +1,11 @@
-import extenstions.*
+import extenstions.addHilt
+import extenstions.addNavigation
+import extenstions.addNetwork
+import extenstions.addRoom
+import extenstions.addTestsDependencies
+import extenstions.addUtils
+import extenstions.androidComponent
+import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
     id("com.android.application")
@@ -7,6 +14,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("org.jlleitschuh.gradle.ktlint").version("11.2.0")
 }
 
 @Suppress("UnstableApiUsage")
@@ -88,7 +96,6 @@ android {
     }
 }
 
-
 dependencies {
     androidComponent()
     addNavigation()
@@ -98,3 +105,25 @@ dependencies {
     addUtils()
     addTestsDependencies()
 }
+
+val installGitHook by tasks.creating(Copy::class) {
+    val suffix = if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        println("***********************************")
+        println("Running installGitHook on windows")
+        println("***********************************")
+        "windows"
+    } else {
+        println("***********************************")
+        println("Running installGitHook on macos")
+        println("***********************************")
+        "macos"
+    }
+    val sourceDir = File(rootProject.rootDir, "scripts/pre-commit-$suffix")
+    val targetDir = File(rootProject.rootDir, ".git/hooks")
+    from(sourceDir)
+    into(targetDir)
+    rename("pre-commit-$suffix", "pre-commit")
+    fileMode = 777
+}
+
+tasks.getByPath(":app:preBuild").dependsOn(installGitHook)
